@@ -6,8 +6,10 @@ from matplotlib import cm,colors
 import numpy as np  
 from matplotlib import rc  
 from sklearn import linear_model,tree,svm,neighbors,ensemble
+from sklearn.kernel_ridge import KernelRidge
 from sklearn.linear_model import ridge_regression,RidgeCV
 from sklearn.ensemble import BaggingRegressor
+from sklearn.decomposition import PCA
 from sklearn.tree import ExtraTreeRegressor 
 from sklearn import metrics,svm,preprocessing
 from sklearn.cross_validation import train_test_split
@@ -193,6 +195,7 @@ def try_different_model(model):
     # print("intercep:%s"%model.intercept_)
     # print("coefficient:%s"%model.coef_)
     score = model.score(X_test,Y_test)
+    # print(len(X_test),len(Y_test))
     result = model.predict(X_test)
     if hasattr(model,'feature_importances_'):
         print(str(model).split('(')[0]+'\'s'+' '+"feature importances:%s"%model.feature_importances_)
@@ -205,7 +208,7 @@ def try_different_model(model):
     plt.title(str(model).split('(')[0]+'\'s'+' '+'score:%f'%score)
     plt.figure(figsize=(10,8))
     plt.scatter(Y_test,result,s=50, c='b',marker='<')
-    # print(type(X_train), type(Y_train))
+    # print((X_train))#, len(Y_train))
     # plt.scatter(X_train, Y_train, s=80, c='orange', marker='*')
     plt.plot(Y_test,Y_test,'r',label='y=x')
     plt.xlabel("test data")
@@ -213,7 +216,7 @@ def try_different_model(model):
     plt.title(str(model).split('(')[0]+'\'s'+' '+'score:%f'%score)
     plt.show()
 if __name__ == '__main__':
-    for i in [tree.DecisionTreeRegressor(),linear_model.LinearRegression(),svm.SVR(kernel='rbf',C=1e1,gamma=0.1),neighbors.KNeighborsRegressor(),ensemble.RandomForestRegressor(n_estimators=10,oob_score=True),ensemble.AdaBoostRegressor(n_estimators=10),ensemble.GradientBoostingRegressor(n_estimators=10),BaggingRegressor(),ExtraTreeRegressor()]:#linear_model.ridge_regression(alpha=1.0,X=X_train,y=Y_train),ensemble.GradientBoostingRegressor(n_estimators=10,learning_rate=0.1,max_depth=7,random_state=0,loss='ls')
+    for i in [tree.DecisionTreeRegressor(),linear_model.LinearRegression(),svm.SVR(kernel='rbf',C=1e1,gamma=0.1),neighbors.KNeighborsRegressor(),ensemble.RandomForestRegressor(n_estimators=10,oob_score=True),ensemble.AdaBoostRegressor(n_estimators=10),ensemble.GradientBoostingRegressor(n_estimators=10),BaggingRegressor(),ExtraTreeRegressor(),KernelRidge(alpha=0.05,kernel='rbf')]:#,PCA(n_components=5),linear_model.ridge_regression(alpha=1.0,X=X_train,y=Y_train),ensemble.GradientBoostingRegressor(n_estimators=10,learning_rate=0.1,max_depth=7,random_state=0,loss='ls')
         try_different_model(i)
     
 

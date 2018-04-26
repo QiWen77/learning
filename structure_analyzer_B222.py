@@ -53,116 +53,112 @@ print("percent_lattice_change:",lattice_parameter_changes)
 bond_dist = relax.get_percentage_bond_dist_changes()
 connec = VoronoiConnectivity(s2)
 
-B_233_dopant = [0]
-B_233_dopant_neighbour = [144,153,162,165,180,181]
-B_233_dopant_neighbour_Pb = [117,111,114,109,110]
-B_233_dopant_neighbour_Pb_I =[[144,153,171,174,189,190],[147,156,165,168,183,184],[150,159,162,168,186,187],[145,154,163,166,181,182],[146,155,164,167,180,182]]
-B_233 = zip(B_233_dopant_neighbour_Pb,B_233_dopant_neighbour_Pb_I)
+#B_233_dopant = [0]
+#B_233_dopant_neighbour = [144,153,162,165,180,181]
+#B_233_dopant_neighbour_Pb = [117,111,114,109,110]
+#B_233_dopant_neighbour_Pb_I =[[144,153,171,174,189,190],[147,156,165,168,183,184],[150,159,162,168,186,187],[145,154,163,166,181,182],[146,155,164,167,180,182]]
+#B_233 = zip(B_233_dopant_neighbour_Pb,B_233_dopant_neighbour_Pb_I)
 
 
 ### To determine the dopant and its neighbour I pair and bond distance 
-comb1 = []
-for i in B_233_dopant:
-    for j in B_233_dopant_neighbour:
-        pair = []
-        pair.append(i)
-        pair.append(j)
-        #print("pair:",pair)
-        comb1.append(pair)
-#print("B_233 dopant and neighbours combination:",comb1)
+#comb1 = []
+#for i in B_233_dopant:
+#    for j in B_233_dopant_neighbour:
+#        pair = []
+#        pair.append(i)
+#        pair.append(j)
+#        #print("pair:",pair)
+#        comb1.append(pair)
+##print("B_233 dopant and neighbours combination:",comb1)
 
 #print("get_connections:",connec.get_connections())
-neighbour1 = [ ]
-for i in comb1:
-    for j in connec.get_connections():
-        if list_a_is_in_list_b(i,j):
-            #print(j)
-            neighbour1.append(j)
-#print(neighbour1)
-pop_list = range(1,len(comb1)+1)
-for i in pop_list:
-    neighbour1.pop(i)
-print("B_233 dopant and neighbours and distance:",neighbour1)
-dopant_bond_a = neighbour1[0][-1]+neighbour1[1][-1]
-dopant_bond_b = neighbour1[2][-1]+neighbour1[3][-1]
-dopant_bond_c = neighbour1[4][-1]+neighbour1[5][-1]
-average_dopant_bond_a = dopant_bond_a/2
-average_dopant_bond_b = dopant_bond_b/2
-average_dopant_bond_c = dopant_bond_c/2
-distance1 = []
-for i in neighbour1:
-    distance1.append(i[-1])
-average_dopant_bond = sum(distance1)/len(distance1)
-#print("\n","average_dopant_bond_a:",average_dopant_bond_a,"\n","average_dopant_bond_b:",average_dopant_bond_a,"\n","average_dopant_bond_c:",average_dopant_bond_c,"\n","average_dopant_bond:",average_dopant_bond)
+#neighbour1 = [ ]
+#for i in comb1:
+#    for j in connec.get_connections():
+#        if list_a_is_in_list_b(i,j):
+#            #print(j)
+#            neighbour1.append(j)
+##print(neighbour1)
+#pop_list = range(1,len(comb1)+1)
+#for i in pop_list:
+#    neighbour1.pop(i)
+#print("B_233 dopant and neighbours and distance:",neighbour1)
+#dopant_bond_a = neighbour1[0][-1]+neighbour1[1][-1]
+#dopant_bond_b = neighbour1[2][-1]+neighbour1[3][-1]
+#dopant_bond_c = neighbour1[4][-1]+neighbour1[5][-1]
+#average_dopant_bond_a = dopant_bond_a/2
+#average_dopant_bond_b = dopant_bond_b/2
+#average_dopant_bond_c = dopant_bond_c/2
+#distance1 = []
+#for i in neighbour1:
+#    distance1.append(i[-1])
+#average_dopant_bond = sum(distance1)/len(distance1)
+##print("\n","average_dopant_bond_a:",average_dopant_bond_a,"\n","average_dopant_bond_b:",average_dopant_bond_a,"\n","average_dopant_bond_c:",average_dopant_bond_c,"\n","average_dopant_bond:",average_dopant_bond)
 
 ###To determine the adjacent Pb and its I pair and bond distance
-B_233_comb = [ ]
-for i in B_233:
-    B_233_comb.append(tuple(i))
-#print("B_233 adjacent combinations:",B_233_comb)
+#B_233_comb = [ ]
+#for i in B_233:
+#    B_233_comb.append(tuple(i))
+##print("B_233 adjacent combinations:",B_233_comb)
 
-comb2 = [ ]
-for i in B_233_comb:
-   # comb2 = [ ]
-    center_Pb = i[0]
-    coordination_I = i[1]
-    #print("center_Pb:",center_Pb,"\n","coordination_I:",coordination_I)
-    for j in coordination_I:
-        temp = []
-        temp.append(center_Pb)
-        temp.append(j)
-       # print()
-        comb2.append(temp)
-#print("B_233 adjacent Pb and neighbour combination:",comb2)
+#comb2 = [ ]
+#for i in B_233_comb:
+#   # comb2 = [ ]
+#    center_Pb = i[0]
+#    coordination_I = i[1]
+#    #print("center_Pb:",center_Pb,"\n","coordination_I:",coordination_I)
+#    for j in coordination_I:
+#        temp = []
+#        temp.append(center_Pb)
+#        temp.append(j)
+#       # print()
+#        comb2.append(temp)
+##print("B_233 adjacent Pb and neighbour combination:",comb2)
 
-neighbour2 = []
-for i in comb2:
-    for j in connec.get_connections():
-        if list_a_is_in_list_b(i,j):
-            #print(j)
-            neighbour2.append(j)
+#neighbour2 = []
+#for i in comb2:
+#    for j in connec.get_connections():
+#        if list_a_is_in_list_b(i,j):
+#            #print(j)
+#            neighbour2.append(j)
 # To eliminate the redundant pairs
-pop_list = range(1,len(comb2)+1)
-for i in pop_list:
-    neighbour2.pop(i)
-print("B_233 adjacent Pb and neighbour combination and distances:",neighbour2)
+#pop_list = range(1,len(comb2)+1)
+#for i in pop_list:
+#    neighbour2.pop(i)
+#print("B_233 adjacent Pb and neighbour combination and distances:",neighbour2)
 
-distance_adjacent_a = [ ]
-distance_adjacent_b = [ ]
-distance_adjacent_c = [ ]
-a2  = list(range(0,len(neighbour2),6)) + list(range(1,len(neighbour2),6))
-b2  = list(range(2,len(neighbour2),6)) + list(range(3,len(neighbour2),6))
-c2  = list(range(4,len(neighbour2),6)) + list(range(5,len(neighbour2),6)) 
-for i in a2:
-    distance_adjacent_a.append(neighbour2[i][-1])
-for i in b2:
-    distance_adjacent_b.append(neighbour2[i][-1])
-for i in c2:
-    distance_adjacent_c.append(neighbour2[i][-1])
-average_distance_adjacent_a = sum(distance_adjacent_a)/len(distance_adjacent_a)
-average_distance_adjacent_b = sum(distance_adjacent_b)/len(distance_adjacent_b)
-average_distance_adjacent_c = sum(distance_adjacent_c)/len(distance_adjacent_c)
-average_distance_adjacent = sum(distance_adjacent_a+distance_adjacent_b+distance_adjacent_c)/len(neighbour2)
-#print("B_233 average_distance_adjacent_a:",average_distance_adjacent_a)
+#distance_adjacent_a = [ ]
+#distance_adjacent_b = [ ]
+#distance_adjacent_c = [ ]
+#a2  = list(range(0,len(neighbour2),6)) + list(range(1,len(neighbour2),6))
+#b2  = list(range(2,len(neighbour2),6)) + list(range(3,len(neighbour2),6))
+#c2  = list(range(4,len(neighbour2),6)) + list(range(5,len(neighbour2),6)) 
+#for i in a2:
+#    distance_adjacent_a.append(neighbour2[i][-1])
+#for i in b2:
+#    distance_adjacent_b.append(neighbour2[i][-1])
+#for i in c2:
+#    distance_adjacent_c.append(neighbour2[i][-1])
+#average_distance_adjacent_a = sum(distance_adjacent_a)/len(distance_adjacent_a)
+#average_distance_adjacent_b = sum(distance_adjacent_b)/len(distance_adjacent_b)
+#average_distance_adjacent_c = sum(distance_adjacent_c)/len(distance_adjacent_c)
+#average_distance_adjacent = sum(distance_adjacent_a+distance_adjacent_b+distance_adjacent_c)/len(neighbour2)
+##print("B_233 average_distance_adjacent_a:",average_distance_adjacent_a)
 #print("B_233 average_distance_adjacent_b:",average_distance_adjacent_b)
 #print("B_233 average_distance_adjacent_c:",average_distance_adjacent_c)
 #print("B_233 average_distance_adjacent:",average_distance_adjacent)
 
-print("B_233 average_dopant_bond_a-average_distance_adjacent_a:",average_dopant_bond_a-average_distance_adjacent_a)
-print("B_233 average_dopant_bond_b-average_distance_adjacent_b:",average_dopant_bond_b-average_distance_adjacent_b)
-print("B_233 average_dopant_bond_c-average_distance_adjacent_c:",average_dopant_bond_c-average_distance_adjacent_c)
-print("B_233 average_dopant_bond-average_distance_adjacent:",average_dopant_bond-average_distance_adjacent)
+#print("B_233 average_dopant_bond_a-average_distance_adjacent_a:",average_dopant_bond_a-average_distance_adjacent_a)
+#print("B_233 average_dopant_bond_b-average_distance_adjacent_b:",average_dopant_bond_b-average_distance_adjacent_b)
+#print("B_233 average_dopant_bond_c-average_distance_adjacent_c:",average_dopant_bond_c-average_distance_adjacent_c)
+#print("B_233 average_dopant_bond-average_distance_adjacent:",average_dopant_bond-average_distance_adjacent)
 
 B_222_dopant = [0]
 B_222_dopant_neighbour = [64,68,72,74,81,80]
 B_222_dopant_neighbour_Pb = [52,50,49]
-B_222_dopant_neighbour_Pb_I = [[64,68,76,79,84,85],[66,70,72,74,82,83],[65,69,73,75,80,81]]
+B_222_dopant_neighbour_Pb_I = [[64,68,76,78,84,85],[66,70,72,74,82,83],[65,69,73,75,80,81]]
 B_222 = zip(B_222_dopant_neighbour_Pb,B_222_dopant_neighbour_Pb_I)
-B_222_comb = []
-for i in B_222:
-    B_222_comb.append(tuple(i))
-print("B_222_adjacent_combinations:",B_222_comb)
-
+#print("B_222:",B_222.__next__())
 ### To determine the dopant and its neighbour I pair and bond distance
 comb3 = [ ]
 for i in B_222_dopant:
@@ -172,19 +168,19 @@ for i in B_222_dopant:
         pair.append(j)
         #print("pair:",pair)
         comb3.append(pair)
-print("B_222 dopant and neighbours combination:",comb3)
+#print("B_222 dopant and neighbours combination:",comb3)
 
 neighbour3 = [ ]
 for i in comb3:
     for j in connec.get_connections():
         if list_a_is_in_list_b(i,j):
-            print("j:",j)
+           # print("j:",j)
             neighbour3.append(j)
-print("neighbour3:",neighbour3)
+#print("neighbour3:",neighbour3)
 pop_list = range(1,len(comb3)+1)
 for i in pop_list:
     neighbour3.pop(i)
-print("B_222 dopant and neighbours and distance:",neighbour3)
+#print("B_222 dopant and neighbours and distance:",neighbour3)
 dopant_bond_a = neighbour3[0][-1]+neighbour3[1][-1]
 dopant_bond_b = neighbour3[2][-1]+neighbour3[3][-1]
 dopant_bond_c = neighbour3[4][-1]+neighbour3[5][-1]
@@ -195,13 +191,13 @@ distance3 = []
 for i in neighbour3:
     distance3.append(i[-1])
 average_dopant_bond = sum(distance3)/len(distance3)
-print("\n","B_222 average_dopant_bond_a:",average_dopant_bond_a,"\n","B_222 average_dopant_bond_b:",average_dopant_bond_a,"\n","B_222 average_dopant_bond_c:",average_dopant_bond_c,"\n","B_222 average_dopant_bond:",average_dopant_bond)
+print("\n","B_222 average_dopant_bond_a:",average_dopant_bond_a,"\n","B_222 average_dopant_bond_b:",average_dopant_bond_b,"\n","B_222 average_dopant_bond_c:",average_dopant_bond_c,"\n","B_222 average_dopant_bond:",average_dopant_bond)
 
 ###To determine the adjacent Pb and its I pair and bond distance
 B_222_comb = [ ]
 for i in B_222:
     B_222_comb.append(tuple(i))
-print("B_222 adjacent combinations:",B_222_comb)
+#print("B_222 adjacent combinations:",B_222_comb)
 
 comb4 = [ ]
 for i in B_222_comb:
@@ -215,7 +211,8 @@ for i in B_222_comb:
         temp.append(j)
        # print()
         comb4.append(temp)
-print("B_222 adjacent Pb and neighbour combination:",comb4)
+#print("B_222 adjacent Pb and neighbour combination:",comb4)
+#print("connec.get_connections():",connec.get_connections())
 
 neighbour4 = []
 for i in comb4:
@@ -223,18 +220,21 @@ for i in comb4:
         if list_a_is_in_list_b(i,j):
             #print(j)
             neighbour4.append(j)
+#print("len(neighbour4):",neighbour4)
 # To eliminate the redundant pairs
 pop_list = range(1,len(comb4)+1)
+#print("pop_list:",pop_list)
+
 for i in pop_list:
     neighbour4.pop(i)
-print("B_222 adjacent Pb and neighbour combination and distances:",neighbour4)
+#print("B_222 adjacent Pb and neighbour combination and distances:",neighbour4)
 
 distance_adjacent_a = [ ]
 distance_adjacent_b = [ ]
 distance_adjacent_c = [ ]
-a2  = list(range(0,len(neighbour2),6)) + list(range(1,len(neighbour4),6))
-b2  = list(range(2,len(neighbour2),6)) + list(range(3,len(neighbour4),6))
-c2  = list(range(4,len(neighbour2),6)) + list(range(5,len(neighbour4),6))
+a2  = list(range(0,len(neighbour4),6)) + list(range(1,len(neighbour4),6))
+b2  = list(range(2,len(neighbour4),6)) + list(range(3,len(neighbour4),6))
+c2  = list(range(4,len(neighbour4),6)) + list(range(5,len(neighbour4),6))
 for i in a2:
     distance_adjacent_a.append(neighbour4[i][-1])
 for i in b2:
@@ -291,5 +291,4 @@ print("B_222 average_dopant_bond-average_distance_adjacent:",average_dopant_bond
 # img = NN.get_nn_images(s2,0)
 #nn_info = NN.get_nn_info(s2,0)
 #print(poly)#,nn_info
-
 
